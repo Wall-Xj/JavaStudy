@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persons>
+	<person>
+		<name>大红色</name>
+		<age>100</age>
+	</person>
+	<person>
+		<name>辅导费</name>
+		<age>20</age>
+	</person>
+</persons>
