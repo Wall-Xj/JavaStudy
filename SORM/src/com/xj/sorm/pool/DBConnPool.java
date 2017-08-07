@@ -20,6 +20,7 @@ public class DBConnPool {
 	private List<Connection> pool;
 	/**
 	 * 最大连接数
+	 * 
 	 */
 	private static final int POOL_MAX_SIZE = DBManager.getConf().getPoolMaxSize();
 	/**
