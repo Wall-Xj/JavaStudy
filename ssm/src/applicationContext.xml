@@ -16,11 +16,11 @@
         http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<!-- 读取配置文件 -->
-	<bean class="org.springframework.beans.factory.config.PlaceholderConfigurerSupport">
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="location" value="classpath:db.properties"></property>
 	</bean>
 	<!-- 配置 datasourse -->
-	<bean id="datasourse" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${driver}"></property>
 		<property name="url" value="${url}"></property>
 		<property name="username" value="${username}"></property>
@@ -28,13 +28,13 @@
 	</bean>
 	<!-- 配置工厂 -->
 	<bean id="sqlsessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="datasourse" ref="datasourse"></property>
+		<property name="dataSource" ref="dataSource"></property>
 		<property name="configLocation" value="classpath:mybatis.cfg.xml"></property>
 	</bean>
 	<!-- 配置声明式事务 -->
 	<!-- 事务管理器 -->
 	<bean id="txManager" class=" org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="datasourse" ref="datasourse"></property>
+		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 	<tx:advice id="txAdvice" transaction-manager="txManager">
 		<tx:attributes>

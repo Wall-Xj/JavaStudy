@@ -7,6 +7,6 @@
 		<package name="com.xj.vo" />
 	</typeAliases>
 	<mappers>
-		<mapper resource="org/mybatis/example/BlogMapper.xml" />
+		<mapper resource="com/xj/vo/user.mapper.xml" />
 	</mappers>
 </configuration>
