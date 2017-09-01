@@ -16,7 +16,7 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name = "TIMEKEEPER")
+@Table(name = "Timekeeper")
 public class Timekeeper {
 	public static final char IN = 'I';
 	public static final char OUT = 'O';
