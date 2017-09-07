@@ -149,7 +149,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="SpringMVCHibernateManyToManyCRUDExample" path="/SpringMVCHibernateWithSpringSecurityExample" reloadable="true" source="org.eclipse.jst.j2ee.server:SpringMVCHibernateManyToManyCRUDExample"/></Host>
+      <Context docBase="ssh_secutrity" path="/SpringMVCHibernateWithSpringSecurityExample" reloadable="true" source="org.eclipse.jst.jee.server:ssh_secutrity"/></Host>
     </Engine>
   </Service>
 </Server>
