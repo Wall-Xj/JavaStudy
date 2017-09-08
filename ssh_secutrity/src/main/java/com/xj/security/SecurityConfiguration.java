@@ -1,4 +1,4 @@
-package com.xj.springmvc.security;
+package com.xj.security;
 
 import javax.annotation.Resource;
 
@@ -23,7 +23,7 @@ import org.springframework.security.web.authentication.rememberme.PersistentToke
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-	@Resource
+	@Autowired
 	@Qualifier("customUserDetailsService")
 	UserDetailsService userDetailsService;
 
@@ -31,7 +31,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	PersistentTokenRepository tokenRepository;
 
 	//创建过滤器 springSecurityFilterChain
-	@Resource
+	@Autowired
 	public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsService);
 		auth.authenticationProvider(authenticationProvider());

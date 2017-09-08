@@ -14,12 +14,12 @@
         http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<!-- 自动扫描web包 ,将带有注解的类 纳入spring容器管理 -->
-	<context:component-scan base-package="com.xj"></context:component-scan>
+	<context:component-scan base-package="com.xj"></context:component-scan>	
 
 	<!-- 读取配置文件 -->
 	<bean
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="location" value="classpath:db.properties"></property>
+		<property name="location" value="classpath:config.properties"></property>
 	</bean>
 
 	<!-- 配置数据源 -->
@@ -33,13 +33,10 @@
 
 	<!-- 配置SessionFactory -->
 	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
-		<property name="annotatedClasses">
-			<list>
-				<value>com.xj.model</value>
-			</list>
-		</property>
+        <!-- 扫描hibernate注解配置的entity -->  
+        <property name="packagesToScan" value="com.xj.model" />  
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">${hibernate.dialect}</prop>

@@ -65,5 +65,8 @@
 		<servlet-name>Action-Servlet</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
-
+		<servlet-mapping>
+		<servlet-name>Action-Servlet</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
 </web-app>

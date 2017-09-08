@@ -13,7 +13,7 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
-	
+
 	<!--字符转换 -->
 	<filter>
 		<filter-name>characterEncodingFilter</filter-name>
@@ -40,7 +40,7 @@
 	<!--2、部署applicationContext的xml文件 -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/config/applicationContext.xml</param-value>
+		<param-value>/WEB-INF/config/applicationContext.xml</param-value>
 	</context-param>
 
 	<!-- spring MVC配置文件 -->
@@ -49,7 +49,7 @@
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>/config/mvc.xml</param-value>
+			<param-value>/WEB-INF/config/mvc.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
@@ -65,9 +65,8 @@
 		<servlet-name>Action-Servlet</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
-		<servlet-mapping>
+	<servlet-mapping>
 		<servlet-name>Action-Servlet</servlet-name>
-		<url-pattern>*</url-pattern>
+		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-	
 </web-app>
