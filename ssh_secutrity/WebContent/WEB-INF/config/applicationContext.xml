@@ -53,6 +53,8 @@
 		</property>
 	</bean>
 	
+	<tx:annotation-driven transaction-manager="txManager"/>
+	
 	<!-- 配置事务通知 -->
 	<tx:advice id="txAdvice" transaction-manager="txManager">
 		<tx:attributes>
@@ -69,5 +71,7 @@
 			id="pointcut" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut" />
 	</aop:config>
+	
+	
 
 </beans>
