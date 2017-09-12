@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.xj</groupId>
-	<artifactId>ssh_secutrity</artifactId>
+	<artifactId>ssh_secutrity2</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ssh_secutrity Maven Webapp</name>
@@ -176,13 +176,13 @@
 					<version>2.4</version>
 					<configuration>
 						<warSourceDirectory>src/main/webapp</warSourceDirectory>
-						<warName>ssh_secutrity</warName>
+						<warName>ssh_secutrity2</warName>
 						<failOnMissingWebXml>false</failOnMissingWebXml>
 					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
-		<finalName>ssh_secutrity</finalName>
+		<finalName>ssh_secutrity2</finalName>
 	</build>
 
 

@@ -13,8 +13,8 @@
 		<intercept-url pattern="/admin**" access="hasRole('ADMIN')" />
 		<intercept-url pattern="/dba**"
 			access="hasRole('ADMIN') and hasRole('DBA')" />
-		<form-login login-page="/login" username-parameter="ssoId"
-			password-parameter="password" authentication-failure-url="/Access_Denied" />
+		<form-login login-page="/login" username-parameter="ssoId" login-processing-url="/login"
+			password-parameter="password" />
 		<csrf />
 
 		<session-management
@@ -39,28 +39,30 @@
 	<beans:bean id="customUserDetailsService" class="com.xj.security.CustomUserDetailsService" />
 
 	<beans:bean id="tokenRepository" class="com.xj.dao.HibernateTokenRepositoryImpl" />
+	
+	<beans:bean id="authenticationTrustResolver" class="org.springframework.security.authentication.AuthenticationTrustResolverImpl"/>
 
 
-	<!-- Remember-Me对应的Filter -->
+	<!-- Remember-Me对应的Filter 
 	<beans:bean id="rememberMeFilter"
 		class="org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter">
 		<beans:property name="rememberMeServices" ref="rememberMeServices" />
 		<beans:property name="authenticationManager" ref="authenticationManager" />
-	</beans:bean>
+	</beans:bean>-->
 	
 	<!-- RememberMeServices的实现 -->
-	<beans:bean id="rememberMeServices"
+	<beans:bean id="persistentTokenBasedRememberMeServices"
 		class="org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices">
-		<beans:property name="key" value="remember-me" />
-		<beans:property name="userDetailsService" ref="customUserDetailsService" />
-		<beans:property name="tokenRepository" ref="tokenRepository" />
+		<beans:constructor-arg value="remember-me" index="0"/>
+		<beans:constructor-arg ref="customUserDetailsService" index="1"/>
+		<beans:constructor-arg ref="tokenRepository" index="2"/>
 	</beans:bean>
 	
-	<!-- key值需与对应的RememberMeServices保持一致 -->
+	<!-- key值需与对应的RememberMeServices保持一致
 	<beans:bean id="rememberMeAuthenticationProvider"
 		class="org.springframework.security.authentication.RememberMeAuthenticationProvider">
 		<beans:property name="key" value="remember-me" />
-	</beans:bean>
+	</beans:bean> -->
 
 
 
