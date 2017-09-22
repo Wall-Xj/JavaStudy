@@ -11,22 +11,13 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
+	<!-- 扫描该包下的注解 -->
+	<context:component-scan base-package="com.sn.controller" />
+
+	<!--2. 开启注解 -->
 	<mvc:annotation-driven />
 
-	<mvc:annotation-driven conversion-service="conversionService" />
-
-	<bean id="conversionService"
-		class="org.springframework.context.support.ConversionServiceFactoryBean">
-		<property name="converters">
-			<set>
-				<bean class="com.xj.security.RoleToUserProfileConverter">
-				</bean>
-			</set>
-		</property>
-	</bean>
-
 	<!-- 配置视图解析器 -->
-
 	<bean id="jspViewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass"
@@ -43,17 +34,5 @@
 		<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"> 
 		<property name="messageConverters"> <list> <ref bean="stringConverter"></ref> 
 		<ref bean="jsonConverter"></ref> </list> </property> </bean> -->
-
-	<!-- 定义国际化资源文件查找规则 ，各种messages.properties -->
-	<bean id="messageSource"
-		class="org.springframework.context.support.ResourceBundleMessageSource"
-		p:basename="config.messages.messages">
-	</bean>
-
-	<!-- 资源访问处理器 -->
-	<mvc:resources location="/static/**" mapping="/WEB-INF/static/"></mvc:resources>
-
-	<!-- 扫描该包下的注解 -->
-	<context:component-scan base-package="com.xj.controller" />
 
 </beans>

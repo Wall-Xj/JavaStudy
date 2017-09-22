@@ -13,7 +13,7 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
-	
+
 	<!--字符转换 -->
 	<filter>
 		<filter-name>characterEncodingFilter</filter-name>
@@ -65,8 +65,24 @@
 		<servlet-name>Action-Servlet</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
-		<servlet-mapping>
+	<servlet-mapping>
 		<servlet-name>Action-Servlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	    <!-- spring-security 管理session配置 -->  
+    <listener>  
+        <listener-class>  
+            org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>  
+    </listener>
 </web-app>

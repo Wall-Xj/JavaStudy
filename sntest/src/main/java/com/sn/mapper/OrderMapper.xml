@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sn.mapper.OrderMapper">
+
+    <insert id="save" parameterType="com.sn.entity.Order" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO  `order` (
+            userId,
+            userName,
+            realName,
+            productId,
+            productName,
+            createTime
+        )
+        VALUES
+            (
+                #{userId},
+                #{userName},
+                #{realName},
+                #{productId},
+                #{productName},
+                #{createTime}
+            )
+    </insert>
+
+    <select id="getList" resultType="com.sn.entity.Order" parameterType="Integer">
+            SELECT
+                *
+            FROM
+                mydb.order
+            WHERE
+                userId = #{userId}
+    </select>
+
+    <select id="findByIdAndUserId" resultType="com.sn.entity.Order" parameterType="Integer">
+        select * from `order` where userId=#{userId} and id=#{oId}
+    </select>
+
+    <delete id="delete" parameterType="Integer" >
+        delete from `order` where id=#{oId}
+    </delete>
+
+</mapper>
